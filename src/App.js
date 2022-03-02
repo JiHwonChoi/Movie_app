@@ -1,13 +1,14 @@
 import React from "react";
 import axios from 'axios'
 import Movie from './Movie'
+import './App.css'
 
 
 class App extends React.Component{
 
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
 
   state = {
     isLoading: true,
@@ -42,19 +43,30 @@ class App extends React.Component{
     // 구조 분해할당으로 this.state 를 매번 입력하지 않아도 됨
 
     return (
-      <div>
-        {isLoading ? 'Loading...' : movies.map((movie)=>{
+      <section class="container">
+        {isLoading ?(
+          <div class="loader">
+            <span class="loader__text">'Loading...'</span>
+          </div>
+        ) : (
+          <div class="movies">
+            {
+              movies.map((movie)=>{
           
-          return <Movie
-            key={movie.id}
-            id={movie.id}
-            year ={movie.year}
-            title={movie.title}
-            summary={movie.summary}
-            poster={movie.medium_cover_image}
-          ></Movie>
-        })}
-      </div>
+                return <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  year ={movie.year}
+                  title={movie.title}
+                  summary={movie.summary}
+                  poster={movie.medium_cover_image}
+                  genre ={movie.genres}
+                ></Movie>
+              })
+            }
+          </div>
+        )}
+      </section>
     )
   }
 }
