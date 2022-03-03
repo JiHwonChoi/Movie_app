@@ -1,10 +1,15 @@
 
 import React from "react";
 import './About.css';
+import Navigation from "../components/Navigation";
 
 function About (){
    return (
-       <div className="about__container">
+       <div>
+           <Navigation></Navigation>
+           <div className="about__container">
+           
+
            <span>
                "Freedom is the freedom to say that hwo plus two make four."
            </span>
@@ -12,6 +17,8 @@ function About (){
 
            </span>    
        </div>
+       </div>
+       
    )
    
 }
